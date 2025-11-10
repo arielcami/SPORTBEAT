@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportBeat - Gestión Deportiva Integral</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1698844013403-b7c4cf0d3b2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2NjZXIlMjBmb290YmFsbCUyMHN0YWRpdW0lMjBiYWNrZ3JvdW5kfGVufDF8fHx8MTc1Nzk1NjExNXww&ixlib=rb-4.1.0&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Header -->
+    <header class="bg-black/50 backdrop-blur-md border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center overflow-hidden">
+					  <img th:src="@{/img/logo.png}" alt="Logo" class="w-[200px] h-auto object-cover">
+
+					</div>
+
+                    <span class="text-xl font-bold text-white">SportBeat</span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-white hover:text-blue-300 transition-colors">Inicio</a>
+                    <a href="#" class="text-white hover:text-blue-300 transition-colors">Características</a>
+                    <a href="#" class="text-white hover:text-blue-300 transition-colors">Deportes</a>
+                    <a href="#" class="text-white hover:text-blue-300 transition-colors">Contacto</a>
+                </nav>
+                <div class="flex space-x-4">
+                    <a th:href="@{/v/login}" class="inline-block">
+					    <button class="bg-white/20 backdrop-blur text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors">
+					        Iniciar Sesión
+					    </button>
+					</a>
+					<a th:href="@{/v/reg}" class="inline-block">
+                    	<button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Registrarse</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
+                Sistema Integral de<br>Gestión Deportiva
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                SportsBeat revoluciona la gestión deportiva con herramientas avanzadas para administradores, 
+                entrenadores, jugadores y fanáticos. Todo en una plataforma unificada.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors">
+                    Comenzar Ahora
+                </button>
+                <button class="bg-white/20 backdrop-blur text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-white/30 transition-colors">
+                    Ver Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-black/30 backdrop-blur">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">Características Principales</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white/10 backdrop-blur rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">👨‍💼</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Panel Administrativo</h3>
+                    <p class="text-gray-300">Gestión completa de ligas, equipos y usuarios con herramientas avanzadas</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🏆</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Panel de Entrenador</h3>
+                    <p class="text-gray-300">Herramientas especializadas para la gestión de equipos y estrategias</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">⚽</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Panel de Jugador</h3>
+                    <p class="text-gray-300">Seguimiento de estadísticas personales y progreso deportivo</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Reportes y Análisis</h3>
+                    <p class="text-gray-300">Estadísticas detalladas y reportes comprehensivos en tiempo real</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sports Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">Deportes Soportados</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-green-500/20 to-green-700/20 backdrop-blur rounded-lg p-8 text-center">
+                    <div class="text-6xl mb-4">⚽</div>
+                    <h3 class="text-2xl font-bold mb-3">Fútbol</h3>
+                    <p class="text-gray-300">Gestión completa de ligas de fútbol con estadísticas avanzadas</p>
+                </div>
+                <div class="bg-gradient-to-br from-orange-500/20 to-orange-700/20 backdrop-blur rounded-lg p-8 text-center">
+                    <div class="text-6xl mb-4">🏀</div>
+                    <h3 class="text-2xl font-bold mb-3">Básquetbol</h3>
+                    <p class="text-gray-300">Herramientas especializadas para equipos de básquetbol</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-500/20 to-blue-700/20 backdrop-blur rounded-lg p-8 text-center">
+                    <div class="text-6xl mb-4">🏐</div>
+                    <h3 class="text-2xl font-bold mb-3">Voleibol</h3>
+                    <p class="text-gray-300">Sistema completo para la gestión de equipos de voleibol</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-600/30 to-purple-600/30 backdrop-blur">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h2 class="text-4xl font-bold mb-6">¿Listo para Revolucionar tu Gestión Deportiva?</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Únete a miles de organizaciones que ya confían en SportsBeat para la gestión de sus deportes
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors">
+                    Registrarse Gratis
+                </button>
+                <button class="bg-white/20 backdrop-blur text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-white/30 transition-colors">
+                    Contactar Ventas
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/50 backdrop-blur border-t border-white/20 py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">S</span>
+                        </div>
+                        <span class="text-xl font-bold text-white">SportsBeat</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Revolucionando la gestión deportiva con tecnología de vanguardia.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Producto</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Características</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Precios</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Demo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Soporte</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Documentación</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Empresa</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Acerca de</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Carreras</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/20 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 SportsBeat. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

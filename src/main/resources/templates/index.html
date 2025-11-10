@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportsBeat - Vistas HTML</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1698844013403-b7c4cf0d3b2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2NjZXIlMjBmb290YmFsbCUyMHN0YWRpdW0lMjBiYWNrZ3JvdW5kfGVufDF8fHx8MTc1Nzk1NjExNXww&ixlib=rb-4.1.0&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Header -->
+    <header class="bg-black/50 backdrop-blur-md border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold">S</span>
+                    </div>
+                    <span class="text-xl font-bold text-white">SportsBeat - Vistas HTML</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
+                Vistas HTML del Sistema SportsBeat
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Versiones estáticas HTML de todas las vistas principales del sistema de gestión deportiva integral
+            </p>
+        </div>
+
+        <!-- Views Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Landing Page -->
+            <div class="bg-white/10 backdrop-blur rounded-lg p-6 hover:bg-white/20 transition-colors">
+                <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">🏠</span>
+                </div>
+                <h3 class="text-xl font-bold text-center mb-3">Landing Page</h3>
+                <p class="text-gray-300 text-center mb-4">
+                    Página de inicio con información del sistema, características y registro público
+                </p>
+                <div class="text-center">
+                    <a th:href="@{/v/landing}" target="_blank" 
+                       class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors inline-block">
+                        Ver Vista
+                    </a>
+                </div>
+            </div>
+
+            <!-- Admin Dashboard -->
+            <div class="bg-white/10 backdrop-blur rounded-lg p-6 hover:bg-white/20 transition-colors">
+                <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">👨‍💼</span>
+                </div>
+                <h3 class="text-xl font-bold text-center mb-3">Panel Administrativo</h3>
+                <p class="text-gray-300 text-center mb-4">Dashboard completo para administradores con estadísticas, gráficas y gestión</p>
+                <div class="text-center">
+                    <a th:href="@{/v/paneladm}" target="_blank" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors inline-block">
+                        Ver Vista
+                    </a>
+                </div>
+            </div>
+
+            <!-- Coach Dashboard -->
+            <div class="bg-white/10 backdrop-blur rounded-lg p-6 hover:bg-white/20 transition-colors">
+                <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">🏆</span>
+                </div>
+                <h3 class="text-xl font-bold text-center mb-3">Panel del Entrenador</h3>
+                <p class="text-gray-300 text-center mb-4">
+                    Interface especializada para entrenadores con gestión de equipos y entrenamientos
+                </p>
+                <div class="text-center">
+                    <a th:href="@{/v/coach}" target="_blank" 
+                       class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors inline-block">
+                        Ver Vista
+                    </a>
+                </div>
+            </div>
+
+            <!-- Player Dashboard -->
+            <div class="bg-white/10 backdrop-blur rounded-lg p-6 hover:bg-white/20 transition-colors">
+                <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">⚽</span>
+                </div>
+                <h3 class="text-xl font-bold text-center mb-3">Panel del Jugador</h3>
+                <p class="text-gray-300 text-center mb-4">
+                    Dashboard personal para jugadores con estadísticas y seguimiento de rendimiento
+                </p>
+                <div class="text-center">
+                    <a th:href="@{/v/player}" target="_blank" 
+                       class="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors inline-block">
+                        Ver Vista
+                    </a>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="bg-white/10 backdrop-blur rounded-lg p-6 hover:bg-white/20 transition-colors">
+                <div class="w-16 h-16 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">📝</span>
+                </div>
+                <h3 class="text-xl font-bold text-center mb-3">Formulario de Registro</h3>
+                <p class="text-gray-300 text-center mb-4">
+                    Formulario completo de registro público con selección de tipo de usuario
+                </p>
+                <div class="text-center">
+                    <a th:href="@{/v/reg}" target="_blank" 
+                       class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors inline-block">
+                        Ver Vista
+                    </a>
+                </div>
+            </div>
+
+            <!-- Statistics Report -->
+            <div class="bg-white/10 backdrop-blur rounded-lg p-6 hover:bg-white/20 transition-colors">
+                <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">📊</span>
+                </div>
+                <h3 class="text-xl font-bold text-center mb-3">Reporte de Estadísticas</h3>
+                <p class="text-gray-300 text-center mb-4">
+                    Reporte completo con estadísticas, gráficas y análisis de temporada
+                </p>
+                <div class="text-center">
+                    <a th:href="@{/v/stat}" target="_blank" 
+                       class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors inline-block">
+                        Ver Vista
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="mt-16 bg-black/30 backdrop-blur rounded-lg p-8">
+            <h2 class="text-3xl font-bold text-center mb-8">Características de las Vistas HTML</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-xl">🎨</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Diseño Responsivo</h4>
+                    <p class="text-gray-300 text-sm">Optimizado para desktop, tablet y móvil</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-xl">📱</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Tailwind CSS</h4>
+                    <p class="text-gray-300 text-sm">Estilos modernos con Tailwind framework</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-xl">📊</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Gráficas Interactivas</h4>
+                    <p class="text-gray-300 text-sm">Chart.js para visualización de datos</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-xl">🏆</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Temática Deportiva</h4>
+                    <p class="text-gray-300 text-sm">Fondos y elementos visuales deportivos</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-xl">🌐</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Traducido al Español</h4>
+                    <p class="text-gray-300 text-sm">Todo el contenido en español</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-xl">💫</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Efectos Visuales</h4>
+                    <p class="text-gray-300 text-sm">Backdrop blur y gradientes modernos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Instructions -->
+        <div class="mt-12 bg-white/10 backdrop-blur rounded-lg p-8">
+            <h2 class="text-2xl font-bold mb-6">Instrucciones de Uso</h2>
+            <div class="space-y-4 text-gray-300">
+                <div class="flex items-start space-x-3">
+                    <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0 mt-0.5">1</span>
+                    <p>Haz clic en cualquier botón "Ver Vista" para abrir la vista HTML en una nueva pestaña</p>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0 mt-0.5">2</span>
+                    <p>Todas las vistas son completamente funcionales con datos de ejemplo y gráficas interactivas</p>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0 mt-0.5">3</span>
+                    <p>Puedes usar estas vistas como prototipos, referencias de diseño o para presentaciones</p>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0 mt-0.5">4</span>
+                    <p>El código HTML está optimizado y puede ser fácilmente integrado en otros proyectos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black/50 backdrop-blur border-t border-white/20 py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <span class="text-white font-bold">S</span>
+                </div>
+                <span class="text-xl font-bold text-white">SportsBeat</span>
+            </div>
+            <p class="text-gray-400">
+                © 2025 SportsBeat. Sistema Integral de Gestión Deportiva - Vistas HTML Estáticas
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

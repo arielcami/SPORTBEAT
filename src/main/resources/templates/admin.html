@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SportsBeat - Panel Administrativo</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<style>
+body {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+		url('https://images.unsplash.com/photo-1574907060871-4555aa8aca75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXNrZXRiYWxsJTIwY291cnQlMjBhcmVuYSUyMGJhY2tncm91bmR8ZW58MXx8fHwxNzU3OTU2MTE4fDA&ixlib=rb-4.1.0&q=80&w=1080');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+@
+keyframes fade-in {from { opacity:0;
+	transform: translateY(10px);
+}
+
+to {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+}
+.animate-fade-in {
+	animation: fade-in 0.5s ease-out;
+}
+</style>
+</head>
+
+<body class="min-h-screen bg-gray-100">
+	<div class="flex min-h-screen">
+		<!-- Sidebar -->
+		<div class="w-64 bg-white/95 backdrop-blur-sm shadow-lg">
+			<div class="p-6">
+				<div class="flex items-center space-x-2 mb-8">
+					<div
+						class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+						<span class="text-white font-bold text-sm">S</span>
+					</div>
+					<span class="text-xl font-bold text-gray-800">SportsBeat</span>
+				</div>
+				<nav class="space-y-2">
+					<a th:href="@{/v/paneladm}"
+						class="flex items-center space-x-3 text-blue-600 bg-blue-50 px-3 py-2 rounded-lg">
+						<span>📊</span> <span>Dashboard</span>
+					</a> <a th:href="@{/v/registro-jugador}"
+						class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+						<span>👤</span> <span>Registrar Jugador</span>
+					</a> <a th:href="@{/v/registro-equipo}"
+						class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+						<span>🏆</span> <span>Registrar Equipo</span>
+					</a> <a th:href="@{/v/registro-resultado}"
+						class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+						<span>📝</span> <span>Registrar Resultado</span>
+					</a> <a th:href="@{/v/clasificaciones}"
+						class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+						<span>📋</span> <span>Clasificaciones</span>
+					</a> <a th:href="@{/v/calendario}"
+						class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+						<span>📅</span> <span>Calendario</span>
+					</a> <a th:href="@{/v/ligas}"
+						class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+						<span>🏟️</span> <span>Ligas</span>
+					</a> <a th:href="@{/v/estadisticas}"
+						class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+						<span>📈</span> <span>Estadísticas</span>
+					</a> <a th:href="@{/v/reportes}"
+						class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+						<span>📊</span> <span>Reportes</span>
+					</a> <a th:href="@{/v/notificaciones}"
+						class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+						<span>🔔</span> <span>Notificaciones</span>
+					</a>
+				</nav>
+			</div>
+		</div>
+
+		<!-- Main Content -->
+		<div class="flex-1 flex flex-col">
+			<!-- Header -->
+			<header
+				class="bg-white/95 backdrop-blur-sm border-b border-gray-200 p-4">
+				<div class="flex items-center justify-between">
+					<h1 class="text-2xl font-bold text-gray-800">Panel
+						Administrativo</h1>
+					<div class="flex items-center space-x-4">
+						<span class="text-sm text-gray-600" id="userWelcome">
+							Bienvenido, <span id="usernameDisplay"
+							th:text="${usuario?.username}">Admin</span>
+						</span>
+						<button id="btnCerrarSesion"
+							class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors">
+							Cerrar Sesión</button>
+					</div>
+				</div>
+			</header>
+
+			<!-- Dashboard Content -->
+			<main class="flex-1 p-6 overflow-auto">
+				<!-- Stats Cards -->
+				<div
+					class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+					<div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+						<div class="flex items-center">
+							<div class="p-2 bg-blue-100 rounded-lg">
+								<span class="text-2xl">👥</span>
+							</div>
+							<div class="ml-4">
+								<p class="text-sm font-medium text-gray-600">Total Usuarios</p>
+								<p class="text-2xl font-bold text-gray-900"
+									data-estadistica="totalUsuarios"
+									th:text="${estadisticas?.totalUsuarios} ?: '0'">0</p>
+							</div>
+						</div>
+					</div>
+					<div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+						<div class="flex items-center">
+							<div class="p-2 bg-green-100 rounded-lg">
+								<span class="text-2xl">🏆</span>
+							</div>
+							<div class="ml-4">
+								<p class="text-sm font-medium text-gray-600">Equipos Activos</p>
+								<p class="text-2xl font-bold text-gray-900"
+									data-estadistica="equiposActivos"
+									th:text="${estadisticas?.equiposActivos} ?: '0'">0</p>
+							</div>
+						</div>
+					</div>
+					<div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+						<div class="flex items-center">
+							<div class="p-2 bg-purple-100 rounded-lg">
+								<span class="text-2xl">🏟️</span>
+							</div>
+							<div class="ml-4">
+								<p class="text-sm font-medium text-gray-600">Ligas Activas</p>
+								<p class="text-2xl font-bold text-gray-900"
+									data-estadistica="totalLigas"
+									th:text="${estadisticas?.totalLigas} ?: '0'">0</p>
+							</div>
+						</div>
+					</div>
+					<div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+						<div class="flex items-center">
+							<div class="p-2 bg-orange-100 rounded-lg">
+								<span class="text-2xl">📅</span>
+							</div>
+							<div class="ml-4">
+								<p class="text-sm font-medium text-gray-600">Partidos Este
+									Mes</p>
+								<p class="text-2xl font-bold text-gray-900"
+									data-estadistica="partidosEsteMes"
+									th:text="${estadisticas?.partidosEsteMes} ?: '0'">0</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Charts Row -->
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+					<div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+						<h3 class="text-lg font-bold text-gray-900 mb-4">Registro de
+							Usuarios por Mes</h3>
+						<canvas id="userChart" width="400" height="200"></canvas>
+					</div>
+					<div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+						<h3 class="text-lg font-bold text-gray-900 mb-4">Distribución
+							por Deporte</h3>
+						<canvas id="sportsChart" width="400" height="200"></canvas>
+					</div>
+				</div>
+
+				<!-- Recent Activity -->
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+					<div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+						<div class="flex justify-between items-center mb-4">
+							<h3 class="text-lg font-bold text-gray-900">Actividad
+								Reciente</h3>
+							<button id="btnRecargarActividad"
+								class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+								Actualizar</button>
+						</div>
+						<div class="space-y-4" id="actividadReciente">
+							<div class="text-center text-gray-500 py-4">Cargando
+								actividad...</div>
+						</div>
+					</div>
+
+					<div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+						<h3 class="text-lg font-bold text-gray-900 mb-4">Acciones
+							Rápidas</h3>
+						<div class="grid grid-cols-2 gap-4">
+							<button
+								class="bg-blue-500 text-white p-4 rounded-lg hover:bg-blue-600 transition-colors accion-rapida"
+								data-accion="registrar-jugador">
+								<span class="block text-2xl mb-2">👤</span> <span
+									class="text-sm font-medium">Registrar Jugador</span>
+							</button>
+							<button
+								class="bg-green-500 text-white p-4 rounded-lg hover:bg-green-600 transition-colors accion-rapida"
+								data-accion="crear-equipo">
+								<span class="block text-2xl mb-2">🏆</span> <span
+									class="text-sm font-medium">Crear Equipo</span>
+							</button>
+							<button
+								class="bg-purple-500 text-white p-4 rounded-lg hover:bg-purple-600 transition-colors accion-rapida"
+								data-accion="nueva-liga">
+								<span class="block text-2xl mb-2">🏟️</span> <span
+									class="text-sm font-medium">Nueva Liga</span>
+							</button>
+							<button
+								class="bg-orange-500 text-white p-4 rounded-lg hover:bg-orange-600 transition-colors accion-rapida"
+								data-accion="programar-partido">
+								<span class="block text-2xl mb-2">📅</span> <span
+									class="text-sm font-medium">Programar Partido</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		// Inicializar gráficos con datos vacíos
+		document.addEventListener('DOMContentLoaded', function() {
+			// Gráfico de usuarios
+			const userCtx = document.getElementById('userChart').getContext(
+					'2d');
+			window.userChart = new Chart(userCtx, {
+				type : 'line',
+				data : {
+					labels : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun' ],
+					datasets : [ {
+						label : 'Usuarios Registrados',
+						data : [ 0, 0, 0, 0, 0, 0 ],
+						borderColor : 'rgb(59, 130, 246)',
+						backgroundColor : 'rgba(59, 130, 246, 0.1)',
+						tension : 0.4
+					} ]
+				},
+				options : {
+					responsive : true,
+					plugins : {
+						legend : {
+							display : false
+						}
+					},
+					scales : {
+						y : {
+							beginAtZero : true
+						}
+					}
+				}
+			});
+
+			// Gráfico de deportes
+			const sportsCtx = document.getElementById('sportsChart')
+					.getContext('2d');
+			window.sportsChart = new Chart(sportsCtx, {
+				type : 'doughnut',
+				data : {
+					labels : [ 'Fútbol', 'Básquetbol', 'Voleibol' ],
+					datasets : [ {
+						data : [ 0, 0, 0 ],
+						backgroundColor : [ 'rgb(34, 197, 94)',
+								'rgb(249, 115, 22)', 'rgb(59, 130, 246)' ]
+					} ]
+				},
+				options : {
+					responsive : true,
+					plugins : {
+						legend : {
+							position : 'bottom'
+						}
+					}
+				}
+			});
+		});
+		/*]]>*/
+	</script>
+
+	<!-- Incluir scripts -->
+	<script th:src="@{/js/admin-panel.js}"></script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportsBeat - Panel del Jugador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1693517235862-a1b8c3323efb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHx2b2xsZXliYWxsJTIwY291cnQlMjBzcG9ydHMlMjBhcmVuYXxlbnwxfHx8fDE3NTc5NTYxMjB8MA&ixlib=rb-4.1.0&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white/95 backdrop-blur-sm shadow-lg">
+            <div class="p-6">
+                <div class="flex items-center space-x-2 mb-8">
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">S</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-800">SportsBeat</span>
+                </div>
+                <nav class="space-y-2">
+                    <a href="#" class="flex items-center space-x-3 text-purple-600 bg-purple-50 px-3 py-2 rounded-lg">
+                        <span>⚽</span>
+                        <span>Mi Perfil</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+                        <span>📊</span>
+                        <span>Estadísticas</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+                        <span>🏆</span>
+                        <span>Mi Equipo</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+                        <span>📅</span>
+                        <span>Calendario</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+                        <span>📋</span>
+                        <span>Clasificaciones</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+                        <span>🏃</span>
+                        <span>Entrenamientos</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+                        <span>🔔</span>
+                        <span>Notificaciones</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <header class="bg-white/95 backdrop-blur-sm border-b border-gray-200 p-4">
+                <div class="flex items-center justify-between">
+                    <h1 class="text-2xl font-bold text-gray-800">Panel del Jugador</h1>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm text-gray-600">María González - #10</span>
+                        <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors">
+                            Cerrar Sesión
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="flex-1 p-6 overflow-auto">
+                <!-- Player Profile Card -->
+                <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6 mb-8">
+                    <div class="flex items-center space-x-6">
+                        <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
+                            <span class="text-3xl font-bold text-white">MG</span>
+                        </div>
+                        <div class="flex-1">
+                            <h2 class="text-2xl font-bold text-gray-900">María González</h2>
+                            <p class="text-gray-600">Mediocampista - Águilas FC</p>
+                            <p class="text-gray-600">Dorsal #10 - Liga Premier</p>
+                        </div>
+                        <div class="text-right space-y-2">
+                            <div class="bg-green-100 px-3 py-1 rounded-full">
+                                <span class="text-green-800 font-medium">Titular</span>
+                            </div>
+                            <div class="bg-blue-100 px-3 py-1 rounded-full">
+                                <span class="text-blue-800 font-medium">Capitana</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Overview -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-2 bg-green-100 rounded-lg">
+                                <span class="text-2xl">⚽</span>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">Goles</p>
+                                <p class="text-2xl font-bold text-gray-900">8</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-2 bg-blue-100 rounded-lg">
+                                <span class="text-2xl">🎯</span>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">Asistencias</p>
+                                <p class="text-2xl font-bold text-gray-900">12</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-2 bg-purple-100 rounded-lg">
+                                <span class="text-2xl">🏃</span>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">Partidos Jugados</p>
+                                <p class="text-2xl font-bold text-gray-900">14</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-2 bg-yellow-100 rounded-lg">
+                                <span class="text-2xl">📊</span>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">Calificación</p>
+                                <p class="text-2xl font-bold text-gray-900">8.5</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance & Next Match -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Rendimiento por Partido</h3>
+                        <canvas id="performanceChart" width="400" height="200"></canvas>
+                    </div>
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Próximo Partido</h3>
+                        <div class="bg-purple-50 rounded-lg p-4 mb-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-bold text-gray-900">Águilas FC vs Halcones</p>
+                                    <p class="text-sm text-gray-600">Domingo, 15 Diciembre</p>
+                                    <p class="text-sm text-gray-600">Estadio Central - 16:00</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">Convocada</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Posición esperada:</span>
+                                <span class="font-bold">Mediocampista Central</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Minutos promedio:</span>
+                                <span class="font-bold">85 min</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Rival anterior:</span>
+                                <span class="font-bold">Halcones (V 2-1)</span>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 bg-purple-500 text-white py-2 rounded-lg hover:bg-purple-600 transition-colors">
+                            Ver Detalles del Partido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Training & Team Info -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Entrenamientos Esta Semana</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                    <span class="text-green-600 text-xs">✓</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-900">Entrenamiento Técnico</p>
+                                    <p class="text-sm text-gray-600">Martes 18:00 - Completado</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <span class="text-blue-600 text-xs">●</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-900">Entrenamiento Físico</p>
+                                    <p class="text-sm text-gray-600">Jueves 17:00 - Programado</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
+                                    <span class="text-yellow-600 text-xs">●</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-900">Entrenamiento Táctico</p>
+                                    <p class="text-sm text-gray-600">Viernes 16:00 - Programado</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-green-50 rounded-lg">
+                            <p class="text-sm text-green-800">
+                                <span class="font-medium">Asistencia:</span> 95% esta temporada
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Posición en el Equipo</h3>
+                        <div class="text-center mb-6">
+                            <div class="inline-block bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg p-6 text-white">
+                                <p class="text-2xl font-bold">#3</p>
+                                <p class="text-sm">en el equipo</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Goles por partido:</span>
+                                <span class="font-bold">0.57</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Pases completados:</span>
+                                <span class="font-bold">87%</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Minutos jugados:</span>
+                                <span class="font-bold">1,247</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Tarjetas:</span>
+                                <span class="font-bold">2 amarillas</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                            <p class="text-sm text-blue-800">
+                                <span class="font-medium">MVP:</span> 3 veces esta temporada
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Performance Chart
+        const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(performanceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jor 1', 'Jor 2', 'Jor 3', 'Jor 4', 'Jor 5', 'Jor 6', 'Jor 7', 'Jor 8'],
+                datasets: [{
+                    label: 'Calificación',
+                    data: [8.2, 7.8, 9.1, 8.5, 7.9, 9.3, 8.7, 8.8],
+                    backgroundColor: 'rgba(147, 51, 234, 0.8)',
+                    borderColor: 'rgb(147, 51, 234)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportsBeat - Iniciar Sesión</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    body {
+      background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1698844013403-b7c4cf0d3b2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2NjZXIlMjBmb290YmFsbCUyMHN0YWRpdW0lMjBiYWNrZ3JvdW5kfGVufDF8fHx8MTc1Nzk1NjExNXww&ixlib=rb-4.1.0&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+    }
+
+    .login-card {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      max-width: 400px;
+      margin: 4rem auto;
+    }
+
+    .login-card img {
+      width: 100px;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+
+    .login-card h4 {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .login-card p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background-color: #1c1c1c;
+      color: #fff;
+      padding: 2rem 0;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .social-icons a {
+      color: #fff;
+      font-size: 1.4rem;
+      margin-right: 0.5rem;
+    }
+
+    .btn-black {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .btn-black:hover {
+      background-color: #333;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Contenedor principal -->
+  <div class="container">
+    <div class="login-card text-center">
+      <img th:src="@{/img/logo.png}" alt="Logo SportBeat" />
+      <h4>Bienvenido a SportsBeat</h4>
+      <p>Inicia sesión para acceder a tu panel de gestión deportiva</p>
+
+      <!-- Mostrar mensajes de error/success -->
+      <div th:if="${param.error}" class="alert alert-danger" role="alert">
+        Usuario o contraseña incorrectos
+      </div>
+      <div th:if="${param.logout}" class="alert alert-success" role="alert">
+        Has cerrado sesión correctamente
+      </div>
+
+      <!-- Formulario de login para Spring Security -->
+      <form id="loginForm" th:action="@{/login}" method="POST">
+        <div class="mb-3 text-start">
+          <label for="username" class="form-label">Usuario</label>
+          <input type="text" class="form-control" id="username" name="username" 
+                 placeholder="Ingresa tu usuario" required>
+        </div>
+
+        <div class="mb-3 text-start">
+          <label for="password" class="form-label">Contraseña</label>
+          <div class="input-group">
+            <input type="password" class="form-control" id="password" name="password" 
+                   placeholder="Ingresa tu contraseña" required>
+            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+              👁️
+            </button>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mb-3">
+          <a href="#">¿Olvidaste tu contraseña?</a>
+          <a href="#">Contactar soporte</a>
+        </div>
+
+        <button type="submit" class="btn btn-black w-100 mb-2">Iniciar Sesión</button>
+        <a th:href="@{/v/reg}" class="btn btn-outline-dark w-100">Registrarse</a>
+      </form>
+
+      <a th:href="@{/v/landing}" class="btn btn-link mt-3">← Volver al Inicio</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-3">
+          <h6>¿Qué hacemos?</h6>
+          <ul class="list-unstyled">
+            <li><a href="#">Webs Corporativas</a></li>
+            <li><a href="#">Desarrollo Web a medida</a></li>
+            <li><a href="#">Tiendas Online</a></li>
+            <li><a href="#">Marketing Digital</a></li>
+            <li><a href="#">Consultoría Web</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <h6>Soporte</h6>
+          <ul class="list-unstyled">
+            <li><a href="#">Documentación</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <h6>Nuestras Redes</h6>
+          <div class="social-icons">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-whatsapp"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <h6>¿Nos cuentas tu proyecto?</h6>
+          <p class="mb-1">Capince, Agencia de Desarrollo Web</p>
+          <p class="mb-1">Jr. Coronel Zegarra 854 - Jesús María</p>
+          <p class="mb-1">Tel: +51 978 717 661</p>
+          <p>Mail: <a href="mailto:capince.digital@gmail.com">capince.digital@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <small>© 2025 SportBeat. Todos los derechos reservados.</small>
+      </div>
+    </div>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+	    tailwind.config = {
+	        corePlugins: {
+	            preflight: false,
+	        }
+	    }
+	</script>
+  <script>
+    // Solo mantener el toggle de password
+    document.getElementById("togglePassword").addEventListener("click", function () {
+      const passwordInput = document.getElementById("password");
+      const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+      passwordInput.setAttribute("type", type);
+    });
+  </script>
+  
+  <script th:src="@{/js/login.js}" type="text/javascript"></script>
+</body>
+</html>

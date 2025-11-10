@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportBeat - Gestión Deportiva</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+        background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1698844013403-b7c4cf0d3b2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2NjZXIlMjBmb290YmFsbCUyMHN0YWRpdW0lMjBiYWNrZ3JvdW5kfGVufDF8fHx8MTc1Nzk1NjExNXww&ixlib=rb-4.1.0&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+      font-family: 'Poppins', sans-serif;
+      
+      color: #fff;
+    }
+
+    /* Header */
+    nav.navbar {
+      background-color: #000;
+      padding: 1rem 1rem;
+    }
+
+    nav a.nav-link {
+      color: #fff !important;
+      margin: 0 0.6rem;
+      font-weight: 500;
+    }
+
+    nav a.nav-link:hover {
+      color: #0d6efd !important;
+    }
+
+    .btn-login {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .btn-login:hover {
+      background-color: #444;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: 'img/banner-deporte.jpg'center center/cover no-repeat;
+      text-align: center;
+      padding: 6rem 2rem;
+      color: #fff;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #ddd;
+    }
+
+    /* Características */
+   .features {
+  padding: 5rem 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  color: #fff;
+}
+
+.feature-box {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  transition: all 0.3s ease;
+  color: #e5e5e5;
+}
+
+.feature-box:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-6px);
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.bg-blue   { background-color: #3b82f6; }
+.bg-green  { background-color: #22c55e; }
+.bg-purple { background-color: #a855f7; }
+.bg-orange { background-color: #f97316; }
+
+    /* Deportes */
+    .sports {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: url('img/fondo-deportes.jpg') center center/cover no-repeat;
+      position: relative;
+    }
+
+    .sports::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .sports-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .sport-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 2rem;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .sport-card:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Comunidad */
+    .community {
+      padding: 4rem 2rem;
+      background: url('img/fondo-comunidad.jpg') center center/cover no-repeat;
+      position: relative;
+      text-align: center;
+    }
+
+    .community::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .community-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .role-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      color: #000;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .role-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* CTA Final */
+    .cta {
+      background: linear-gradient(135deg, #5b3dc4, #7355e6);
+      padding: 4rem 2rem;
+      text-align: center;
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1c1c1c;
+      color: #ddd;
+      padding: 3rem 0;
+      font-size: 0.9rem;
+    }
+
+    footer h6 {
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .social-icons a {
+      color: #fff;
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="logo.png" alt="SportBeat" width="80" class="me-2">
+        <strong>SPORTBEAT</strong>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Quiénes Somos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Deportes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+          <li class="nav-item"><a href="/login" class="btn btn-login ms-2">Iniciar Sesión</a></li>
+          <li class="nav-item"><a href="/registro" class="btn btn-primary ms-2">Registrarse</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>SISTEMA INTEGRAL DE GESTIÓN DEPORTIVA</h1>
+      <p>SportsBeat revoluciona la gestión deportiva con herramientas avanzadas para administradores, entrenadores, jugadores y fanáticos. Todo en una plataforma unificada.</p>
+      <a href="/registro" class="btn btn-primary me-2">Comenzar Ahora</a>
+      <a href="#" class="btn btn-outline-light">Ver Demo</a>
+    </div>
+  </section>
+
+  <!-- Características -->
+<section class="features">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-4">CARACTERÍSTICAS PRINCIPALES</h2>
+    <p class="text-secondary text-center mb-4">
+      Todo lo que necesitas para gestionar el deporte de manera profesional
+    </p>
+
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="feature-box">
+          <div class="feature-icon bg-blue">
+            <span class="text-2xl">👨‍💼</span>
+          </div>
+          <h5 class="fw-bold mb-2">Panel Administrativo</h5>
+          <p>Gestión completa de ligas, equipos y usuarios con herramientas avanzadas.</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="feature-box">
+          <div class="feature-icon bg-green">
+            <span class="text-2xl">🏆</span>
+          </div>
+          <h5 class="fw-bold mb-2">Panel Entrenador</h5>
+          <p>Herramientas especializadas para la gestión de equipos y estrategias.</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="feature-box">
+          <div class="feature-icon bg-purple">
+            <span class="text-2xl">⚽</span>
+          </div>
+          <h5 class="fw-bold mb-2">Panel Jugador</h5>
+          <p>Seguimiento de estadísticas personales y progreso deportivo.</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="feature-box">
+          <div class="feature-icon bg-orange">
+            <span class="text-2xl">📊</span>
+          </div>
+          <h5 class="fw-bold mb-2">Reportes y Análisis</h5>
+          <p>Estadísticas detalladas y reportes en tiempo real.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Deportes -->
+  <section class="sports">
+    <div class="container sports-content">
+      <h2 class="fw-bold mb-5">DEPORTES SOPORTADOS</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="sport-card">
+            <h5>Fútbol</h5>
+            <p>Gestión completa de ligas y estadísticas avanzadas.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sport-card">
+            <h5>Básquetbol</h5>
+            <p>Herramientas especializadas para equipos y entrenadores.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="sport-card">
+            <h5>Vóleibol</h5>
+            <p>Sistema integral para la gestión de equipos y competencias.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comunidad -->
+  <section class="community">
+    <div class="container community-content">
+      <h2 class="fw-bold mb-4">ÚNETE A NUESTRA COMUNIDAD</h2>
+      <p class="mb-5">Elige tu rol y accede a características personalizadas</p>
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-3">
+          <div class="role-card">
+            <h5>Jugador</h5>
+            <p>Accede a estadísticas personales, calendarios y entrenamientos.</p>
+            <a href="/registro" class="btn btn-outline-dark">Registrarse</a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="role-card">
+            <h5>Equipo</h5>
+            <p>Gestiona tu equipo, programa entrenamientos y registra resultados.</p>
+            <a href="/registro" class="btn btn-outline-dark">Registrarse</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="cta">
+    <h3 class="fw-bold mb-4">¿Listo para revolucionar tu gestión deportiva?</h3>
+    <a href="/registro" class="btn btn-light me-2">Regístrate Gratis</a>
+    <a href="/contacto" class="btn btn-outline-light">Contactar Ventas</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-3">
+          <h6>¿Qué hacemos?</h6>
+          <ul class="list-unstyled">
+            <li><a href="#">Webs Corporativas</a></li>
+            <li><a href="#">Desarrollo Web a medida</a></li>
+            <li><a href="#">Tiendas Online</a></li>
+            <li><a href="#">Marketing Digital</a></li>
+            <li><a href="#">Consultoría Web</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <h6>Soporte</h6>
+          <ul class="list-unstyled">
+            <li><a href="#">Documentación</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <h6>Nuestras Redes</h6>
+          <div class="social-icons">
+            <a href="#"><i class="bi bi-github"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <h6>¿Nos cuentas tu Proyecto?</h6>
+          <p class="mb-1">Capince, Agencia de Desarrollo Web</p>
+          <p class="mb-1">Jr. Coronel Zegarra 854 - Jesús María</p>
+          <p class="mb-1">Tel: +51 978 717 661</p>
+          <p>Mail: <a href="mailto:capince.digital@gmail.com">capince.digital@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <small>© 2025 SportBeat. Todos los derechos reservados.</small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

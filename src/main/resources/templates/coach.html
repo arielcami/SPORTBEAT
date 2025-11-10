@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportsBeat - Panel del Entrenador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1698844013403-b7c4cf0d3b2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2NjZXIlMjBmb290YmFsbCUyMHN0YWRpdW0lMjBiYWNrZ3JvdW5kfGVufDF8fHx8MTc1Nzk1NjExNXww&ixlib=rb-4.1.0&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white/95 backdrop-blur-sm shadow-lg">
+            <div class="p-6">
+                <div class="flex items-center space-x-2 mb-8">
+                    <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">S</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-800">SportsBeat</span>
+                </div>
+                <nav class="space-y-2">
+                    <a href="#" class="flex items-center space-x-3 text-green-600 bg-green-50 px-3 py-2 rounded-lg">
+                        <span>🏆</span>
+                        <span>Mi Equipo</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+                        <span>👥</span>
+                        <span>Jugadores</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+                        <span>📅</span>
+                        <span>Calendario</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+                        <span>📊</span>
+                        <span>Estadísticas</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+                        <span>📋</span>
+                        <span>Clasificaciones</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+                        <span>📝</span>
+                        <span>Reportes</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
+                        <span>🔔</span>
+                        <span>Notificaciones</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <header class="bg-white/95 backdrop-blur-sm border-b border-gray-200 p-4">
+                <div class="flex items-center justify-between">
+                    <h1 class="text-2xl font-bold text-gray-800">Panel del Entrenador</h1>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm text-gray-600">Entrenador Carlos Rodríguez</span>
+                        <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors">
+                            Cerrar Sesión
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="flex-1 p-6 overflow-auto">
+                <!-- Team Overview -->
+                <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6 mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-900">Águilas FC</h2>
+                            <p class="text-gray-600">Liga Premier - Temporada 2024</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-3xl font-bold text-green-600">3° Lugar</p>
+                            <p class="text-sm text-gray-600">en la tabla</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-gray-900">15</p>
+                            <p class="text-sm text-gray-600">Partidos Jugados</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-green-600">9</p>
+                            <p class="text-sm text-gray-600">Victorias</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-yellow-600">3</p>
+                            <p class="text-sm text-gray-600">Empates</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-red-600">3</p>
+                            <p class="text-sm text-gray-600">Derrotas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats & Next Match -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Rendimiento del Equipo</h3>
+                        <canvas id="performanceChart" width="400" height="200"></canvas>
+                    </div>
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Próximo Partido</h3>
+                        <div class="bg-green-50 rounded-lg p-4 mb-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-bold text-gray-900">Águilas FC vs Halcones</p>
+                                    <p class="text-sm text-gray-600">Domingo, 15 Diciembre</p>
+                                    <p class="text-sm text-gray-600">Estadio Central - 16:00</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">Local</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Forma reciente:</span>
+                                <div class="flex space-x-1">
+                                    <span class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">V</span>
+                                    <span class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">V</span>
+                                    <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xs">E</span>
+                                    <span class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">V</span>
+                                    <span class="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">D</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Goles a favor:</span>
+                                <span class="font-bold">28</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Goles en contra:</span>
+                                <span class="font-bold">15</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Players & Training -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Mejores Jugadores</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <span class="font-bold text-blue-600">CM</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-900">Carlos Mendoza</p>
+                                        <p class="text-sm text-gray-600">Delantero</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="font-bold text-gray-900">12 goles</p>
+                                    <p class="text-sm text-gray-600">3 asistencias</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                        <span class="font-bold text-green-600">AR</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-900">Ana Ramírez</p>
+                                        <p class="text-sm text-gray-600">Mediocampista</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="font-bold text-gray-900">8 asistencias</p>
+                                    <p class="text-sm text-gray-600">4 goles</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                        <span class="font-bold text-purple-600">LG</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-900">Luis García</p>
+                                        <p class="text-sm text-gray-600">Portero</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="font-bold text-gray-900">8 vallas</p>
+                                    <p class="text-sm text-gray-600">15 partidos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Programación de Entrenamientos</h3>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Entrenamiento Técnico</p>
+                                        <p class="text-sm text-gray-600">Martes, 12 Diciembre</p>
+                                        <p class="text-sm text-gray-600">Campo de Entrenamiento - 18:00</p>
+                                    </div>
+                                    <span class="bg-blue-500 text-white px-2 py-1 rounded text-xs">Confirmado</span>
+                                </div>
+                            </div>
+                            <div class="bg-green-50 rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Entrenamiento Físico</p>
+                                        <p class="text-sm text-gray-600">Jueves, 14 Diciembre</p>
+                                        <p class="text-sm text-gray-600">Gimnasio - 17:00</p>
+                                    </div>
+                                    <span class="bg-green-500 text-white px-2 py-1 rounded text-xs">Programado</span>
+                                </div>
+                            </div>
+                            <div class="bg-yellow-50 rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Entrenamiento Táctico</p>
+                                        <p class="text-sm text-gray-600">Viernes, 15 Diciembre</p>
+                                        <p class="text-sm text-gray-600">Campo Principal - 16:00</p>
+                                    </div>
+                                    <span class="bg-yellow-500 text-white px-2 py-1 rounded text-xs">Pendiente</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-colors">
+                            Programar Nuevo Entrenamiento
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Performance Chart
+        const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(performanceCtx, {
+            type: 'line',
+            data: {
+                labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 'Sem 7', 'Sem 8'],
+                datasets: [{
+                    label: 'Puntos por Semana',
+                    data: [3, 3, 1, 3, 0, 3, 1, 3],
+                    borderColor: 'rgb(34, 197, 94)',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 3,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
