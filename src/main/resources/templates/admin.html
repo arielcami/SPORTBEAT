@@ -18,8 +18,7 @@ body {
 	background-attachment: fixed;
 }
 
-@
-keyframes fade-in {from { opacity:0;
+@keyframes fade-in {from { opacity:0;
 	transform: translateY(10px);
 }
 
@@ -51,13 +50,13 @@ to {
 					<a th:href="@{/v/paneladm}"
 						class="flex items-center space-x-3 text-blue-600 bg-blue-50 px-3 py-2 rounded-lg">
 						<span>📊</span> <span>Dashboard</span>
-					</a> <a th:href="@{/v/registro-jugador}"
+					</a> <a href="#" th:href="@{/v/registro-jugador}"
 						class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
 						<span>👤</span> <span>Registrar Jugador</span>
-					</a> <a th:href="@{/v/registro-equipo}"
+					</a> <a href="#" th:href="@{/v/registro-equipo}"
 						class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
 						<span>🏆</span> <span>Registrar Equipo</span>
-					</a> <a th:href="@{/v/registro-resultado}"
+					</a> <a href="#" th:href="@{/v/registro-resultado}"
 						class="flex items-center space-x-3 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded-lg">
 						<span>📝</span> <span>Registrar Resultado</span>
 					</a> <a th:href="@{/v/clasificaciones}"
@@ -89,12 +88,10 @@ to {
 			<header
 				class="bg-white/95 backdrop-blur-sm border-b border-gray-200 p-4">
 				<div class="flex items-center justify-between">
-					<h1 class="text-2xl font-bold text-gray-800">Panel
-						Administrativo</h1>
+					<h1 class="text-2xl font-bold text-gray-800">Panel Administrativo</h1>
 					<div class="flex items-center space-x-4">
 						<span class="text-sm text-gray-600" id="userWelcome">
-							Bienvenido, <span id="usernameDisplay"
-							th:text="${usuario?.username}">Admin</span>
+							Bienvenido, <span id="usernameDisplay" th:text="${usuario?.username}">Admin</span>
 						</span>
 						<button id="btnCerrarSesion"
 							class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors">
@@ -228,67 +225,9 @@ to {
 		</div>
 	</div>
 
-	<script th:inline="javascript">
-		/*<![CDATA[*/
-		// Inicializar gráficos con datos vacíos
-		document.addEventListener('DOMContentLoaded', function() {
-			// Gráfico de usuarios
-			const userCtx = document.getElementById('userChart').getContext(
-					'2d');
-			window.userChart = new Chart(userCtx, {
-				type : 'line',
-				data : {
-					labels : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun' ],
-					datasets : [ {
-						label : 'Usuarios Registrados',
-						data : [ 0, 0, 0, 0, 0, 0 ],
-						borderColor : 'rgb(59, 130, 246)',
-						backgroundColor : 'rgba(59, 130, 246, 0.1)',
-						tension : 0.4
-					} ]
-				},
-				options : {
-					responsive : true,
-					plugins : {
-						legend : {
-							display : false
-						}
-					},
-					scales : {
-						y : {
-							beginAtZero : true
-						}
-					}
-				}
-			});
-
-			// Gráfico de deportes
-			const sportsCtx = document.getElementById('sportsChart')
-					.getContext('2d');
-			window.sportsChart = new Chart(sportsCtx, {
-				type : 'doughnut',
-				data : {
-					labels : [ 'Fútbol', 'Básquetbol', 'Voleibol' ],
-					datasets : [ {
-						data : [ 0, 0, 0 ],
-						backgroundColor : [ 'rgb(34, 197, 94)',
-								'rgb(249, 115, 22)', 'rgb(59, 130, 246)' ]
-					} ]
-				},
-				options : {
-					responsive : true,
-					plugins : {
-						legend : {
-							position : 'bottom'
-						}
-					}
-				}
-			});
-		});
-		/*]]>*/
-	</script>
 
 	<!-- Incluir scripts -->
 	<script th:src="@{/js/admin-panel.js}"></script>
+	<script th:src="@{/js/cruds-admin.js}"></script>
 </body>
 </html>
